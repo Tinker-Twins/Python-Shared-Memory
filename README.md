@@ -59,3 +59,6 @@ This project implements a simple and intuitive example of `SharedMemory` with tw
 **Notes:**
 - Launching [`process_1.py`](process_1.py) alone will print `0` (i.e. default value) for all the bytes that haven't yet been written to (since they are written by [`process_2.py`](process_2.py)). The bytes written by [`process_1.py`](process_1.py) itself will be updated and printed accordingly.
 - Launching [`process_2.py`](process_2.py) before [`process_1.py`](process_1.py) will throw an error since the shared memory has not yet been created.
+
+## Reference
+[Jason Brownlee](https://superfastpython.com/about), "How to Use SharedMemory in Python", in [_PYTHON MULTIPROCESSING_](https://superfastpython.com/category/multiprocessing), March 24, 2023. [Online]. Available: https://superfastpython.com/multiprocessing-sharedmemory
