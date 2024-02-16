@@ -46,3 +46,16 @@ Once all processes are finished with the shared memory, it must be explicitly re
 # Destroy the shared memory
 shared_mem.unlink()
 ```
+
+## Example of Using SharedMemory
+
+This project implements a simple and intuitive example of `SharedMemory` with two Python processes:
+- [`process_1.py`](process_1.py) creates the shared memory and writes the first byte.
+- [`process_2.py`](process_2.py) joins the shared memory and writes the second, third and fourth bytes.
+- [`process_1.py`](process_1.py) and [`process_2.py`](process_2.py) both read and print the first, second, third and fourth bytes.
+- [`process_1.py`](process_1.py) and [`process_2.py`](process_2.py) both close the shared memory before terminating.
+- [`process_1.py`](process_1.py) releases the shared memory before terminating.
+
+**Notes:**
+- Launching [`process_1.py`](process_1.py) alone will print `0` (i.e. default value) for all the bytes that haven't yet been written to (since they are written by [`process_2.py`](process_2.py)). The bytes set by [`process_1.py`](process_1.py) itself will be updated accordingly.
+- Launching [`process_2.py`](process_2.py) before [`process_1.py`](process_1.py) will throw an error since the shared memory has not yet been created.
