@@ -57,5 +57,5 @@ This project implements a simple and intuitive example of `SharedMemory` with tw
 - [`process_1.py`](process_1.py) releases the shared memory before terminating.
 
 **Notes:**
-- Launching [`process_1.py`](process_1.py) alone will print `0` (i.e. default value) for all the bytes that haven't yet been written to (since they are written by [`process_2.py`](process_2.py)). The bytes written by [`process_1.py`](process_1.py) itself will be updated accordingly.
+- Launching [`process_1.py`](process_1.py) alone will print `0` (i.e. default value) for all the bytes that haven't yet been written to (since they are written by [`process_2.py`](process_2.py)). The bytes written by [`process_1.py`](process_1.py) itself will be updated and printed accordingly.
 - Launching [`process_2.py`](process_2.py) before [`process_1.py`](process_1.py) will throw an error since the shared memory has not yet been created.
