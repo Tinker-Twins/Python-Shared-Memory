@@ -47,27 +47,43 @@ Once all processes are finished with the shared memory, it must be explicitly re
 shared_mem.unlink()
 ```
 
-## Example of Using SharedMemory
+## Examples of Using SharedMemory
 
-This project implements a simple and intuitive example of `SharedMemory` with two Python processes:
-- [`process_1.py`](process_1.py) creates the shared memory and writes the first byte.
-- [`process_2.py`](process_2.py) joins the shared memory and writes the second, third and fourth bytes.
-- [`process_1.py`](process_1.py) and [`process_2.py`](process_2.py) both read and print the first, second, third and fourth bytes.
-- [`process_1.py`](process_1.py) and [`process_2.py`](process_2.py) both close the shared memory before terminating.
-- [`process_1.py`](process_1.py) releases the shared memory before terminating.
-
-**Terminal 1:**
-```bash
-python3 process_1.py
-```
-**Terminal 2:**
-```bash
-python3 process_2.py
-```
+This project implements two simple and intuitive examples of `SharedMemory` with two Python processes:
+- **`uint8` Example:**
+  - [`process1_uint8.py`](process1_uint8.py) creates the shared memory and writes the first byte.
+  - [`process2_uint8.py`](process2_uint8.py) joins the shared memory and writes the second, third and fourth bytes.
+  - [`process1_uint8.py`](process1_uint8.py) and [`process2_uint8.py`](process2_uint8.py) both read and print the first, second, third and fourth bytes.
+  - [`process1_uint8.py`](process1_uint8.py) and [`process2_uint8.py`](process2_uint8.py) both close the shared memory before terminating.
+  - [`process1_uint8.py`](process1_uint8.py) releases the shared memory before terminating.
+    
+    Terminal 1:
+    ```bash
+    python3 process1_uint8.py
+    ```
+    Terminal 2:
+    ```bash
+    python3 process2_uint8.py
+    ```
+- **`float64` Example:**
+  - [`process1_float64.py`](process1_float64.py) creates the shared memory and writes the first byte array.
+  - [`process2_float64.py`](process2_float64.py) joins the shared memory and writes the second, third and fourth byte  arrays.
+  - [`process1_float64.py`](process1_float64.py) and [`process2_float64.py`](process2_float64.py) both read and print the first, second, third and fourth byte arrays.
+  - [`process1_float64.py`](process1_float64.py) and [`process2_float64.py`](process2_float64.py) both close the shared memory before terminating.
+  - [`process1_float64.py`](process1_float64.py) releases the shared memory before terminating.
+    
+    Terminal 1:
+    ```bash
+    python3 process1_float64.py
+    ```
+    Terminal 2:
+    ```bash
+    python3 process2_float64.py
+    ```
 
 **Notes:**
-- Launching [`process_1.py`](process_1.py) alone will print `0` (i.e. default value) for all the bytes that haven't yet been written to (since they are written by [`process_2.py`](process_2.py)). The bytes written by [`process_1.py`](process_1.py) itself will be updated and printed accordingly.
-- Launching [`process_2.py`](process_2.py) before [`process_1.py`](process_1.py) will throw an error since the shared memory has not yet been created.
+- Launching `process1` alone will print the default value for all the bytes that haven't yet been written to (since they are written by `process2`). The bytes written by `process1` itself will be updated and printed accordingly.
+- Launching `process2` before `process1` will throw an error since the shared memory has not yet been created.
 
 ## Reference
 [Jason Brownlee](https://superfastpython.com/about), "How to Use SharedMemory in Python", in [_PYTHON MULTIPROCESSING_](https://superfastpython.com/category/multiprocessing), March 24, 2023. [Online]. Available: https://superfastpython.com/multiprocessing-sharedmemory
